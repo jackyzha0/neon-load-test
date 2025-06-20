@@ -1,0 +1,252 @@
+[2025-06-19 19:14:38] info: all projects cleared successfully.
+[2025-06-19 19:14:38] info: project-99fb54: project init
+[2025-06-19 19:14:38] info: project-9f7b02: project init
+[2025-06-19 19:14:38] info: project-fe63f6: project init
+[2025-06-19 19:14:38] info: project-cbbffa: project init
+[2025-06-19 19:14:38] info: project-628e81: project init
+[2025-06-19 19:14:38] info: project-8b8352: project init
+[2025-06-19 19:14:38] info: project-3bb99c: project init
+[2025-06-19 19:14:38] info: project-ad69b0: project init
+[2025-06-19 19:14:38] info: project-a7b49e: project init
+[2025-06-19 19:14:38] info: project-fc9e5c: project init
+[2025-06-19 19:14:38] info: project-0d3d35: project init
+[2025-06-19 19:14:38] info: project-9303df: project init
+[2025-06-19 19:14:38] info: project-e54d78: project init
+[2025-06-19 19:14:38] info: project-0b6d5b: project init
+[2025-06-19 19:14:38] info: project-86a689: project init
+[2025-06-19 19:14:38] info: project-ef08b4: project init
+[2025-06-19 19:14:38] info: project-1fd847: project init
+[2025-06-19 19:14:38] info: project-4f6cee: project init
+[2025-06-19 19:14:38] info: project-6af8ff: project init
+[2025-06-19 19:14:38] info: project-d62590: project init
+[2025-06-19 19:14:38] info: project-50046f: project init
+[2025-06-19 19:14:38] info: project-eb8a17: project init
+[2025-06-19 19:14:38] info: project-dc988d: project init
+[2025-06-19 19:14:38] info: project-12dfc1: project init
+[2025-06-19 19:14:38] info: project-3c5f2b: project init
+[2025-06-19 19:14:44] info: project-99fb54: pinging main compute
+[2025-06-19 19:14:46] info: project-ad69b0: pinging main compute
+[2025-06-19 19:14:46] info: project-cbbffa: pinging main compute
+[2025-06-19 19:14:46] info: project-9f7b02: pinging main compute
+[2025-06-19 19:14:47] info: project-4f6cee: pinging main compute
+[2025-06-19 19:14:48] info: project-9303df: pinging main compute
+[2025-06-19 19:14:49] info: project-ef08b4: pinging main compute
+[2025-06-19 19:14:49] info: project-a7b49e: pinging main compute
+[2025-06-19 19:14:49] info: project-628e81: pinging main compute
+[2025-06-19 19:14:49] info: project-0d3d35: pinging main compute
+[2025-06-19 19:14:53] info: project-fe63f6: pinging main compute
+[2025-06-19 19:14:54] info: project-e54d78: pinging main compute
+[2025-06-19 19:14:56] info: project-eb8a17: pinging main compute
+[2025-06-19 19:15:01] info: project-50046f: pinging main compute
+[2025-06-19 19:15:04] info: project-1fd847: pinging main compute
+[2025-06-19 19:15:07] info: project-d62590: pinging main compute
+[2025-06-19 19:15:10] info: project-3bb99c: pinging main compute
+[2025-06-19 19:15:12] info: project-0b6d5b: pinging main compute
+[2025-06-19 19:15:13] info: project-12dfc1: pinging main compute
+[2025-06-19 19:15:16] info: project-fc9e5c: pinging main compute
+[2025-06-19 19:15:19] info: project-8b8352: pinging main compute
+[2025-06-19 19:15:20] info: project-86a689: pinging main compute
+[2025-06-19 19:15:23] info: project-6af8ff: pinging main compute
+[2025-06-19 19:15:25] info: project-3c5f2b: pinging main compute
+[2025-06-19 19:15:26] info: project-dc988d: pinging main compute
+[2025-06-19 19:15:30] info: created 25 projects successfully.
+[2025-06-19 19:15:30] info: starting load test...
+[2025-06-19 19:15:30] info: press ctrl+c at any time to see test summary and exit.
+[2025-06-19 19:15:34] info: project-eb8a17: writing user
+[2025-06-19 19:15:34] info: project-628e81: writing user
+[2025-06-19 19:15:34] info: project-cbbffa: writing user
+[2025-06-19 19:15:34] info: project-3bb99c: writing user
+[2025-06-19 19:15:34] info: project-ad69b0: writing user
+[2025-06-19 19:15:34] info: project-e54d78: writing user
+[2025-06-19 19:15:35] info: project-fe63f6: writing user
+[2025-06-19 19:15:35] info: project-0b6d5b: writing user
+[2025-06-19 19:15:35] info: project-0d3d35: writing user
+[2025-06-19 19:15:35] info: project-3c5f2b: writing user
+[2025-06-19 19:15:35] info: project-6af8ff: writing user
+[2025-06-19 19:15:35] info: project-9303df: writing user
+[2025-06-19 19:15:36] info: project-12dfc1: writing user
+[2025-06-19 19:15:36] info: project-fc9e5c: writing user
+[2025-06-19 19:15:36] info: project-d62590: writing user
+[2025-06-19 19:15:36] info: project-a7b49e: writing user
+[2025-06-19 19:15:36] info: project-e1f30e: project init
+[2025-06-19 19:15:36] info: project-4f6cee: writing user
+[2025-06-19 19:15:36] info: project-1fd847: writing user
+[2025-06-19 19:15:36] info: project-86a689: writing user
+[2025-06-19 19:15:37] info: project-ef08b4: writing user
+[2025-06-19 19:15:37] info: project-8b8352: writing user
+[2025-06-19 19:15:37] info: project-99fb54: writing user
+[2025-06-19 19:15:37] info: project-9f7b02: writing user
+[2025-06-19 19:15:37] info: project-50046f: writing user
+[2025-06-19 19:15:38] info: project-eb8a17: writing user
+[2025-06-19 19:15:39] info: project-dc988d: writing user
+[2025-06-19 19:15:40] info: project-fe63f6: writing user
+[2025-06-19 19:15:40] info: project-0b6d5b: writing user
+[2025-06-19 19:15:40] info: project-cbbffa: writing user
+[2025-06-19 19:15:40] info: project-ad69b0: writing user
+[2025-06-19 19:15:40] info: project-628e81: writing user
+[2025-06-19 19:15:41] info: project-a57e5a: project init
+[2025-06-19 19:15:41] info: project-e54d78: writing user
+[2025-06-19 19:15:41] info: project-3c5f2b: writing user
+[2025-06-19 19:15:41] info: project-d62590: writing user
+[2025-06-19 19:15:41] info: project-3bb99c: writing user
+[2025-06-19 19:15:41] info: project-fc9e5c: writing user
+[2025-06-19 19:15:41] info: project-9303df: writing user
+[2025-06-19 19:15:42] info: project-a7b49e: writing user
+[2025-06-19 19:15:42] info: project-0d3d35: writing user
+[2025-06-19 19:15:42] info: project-12dfc1: writing user
+[2025-06-19 19:15:42] info: project-4f6cee: writing user
+[2025-06-19 19:15:42] info: project-1fd847: writing user
+[2025-06-19 19:15:42] info: project-86a689: writing user
+[2025-06-19 19:15:42] info: project-e1f30e: pinging main compute
+[2025-06-19 19:15:43] info: project-6af8ff: writing user
+[2025-06-19 19:15:43] info: project-99fb54: writing user
+[2025-06-19 19:15:43] info: project-9f7b02: writing user
+[2025-06-19 19:15:43] info: project-a57e5a: pinging main compute
+[2025-06-19 19:15:44] info: project-8b8352: writing user
+[2025-06-19 19:15:44] info: project-50046f: writing user
+[2025-06-19 19:15:44] info: project-ef08b4: writing user
+[2025-06-19 19:15:44] info: project-eb8a17: writing user
+[2025-06-19 19:15:44] info: project-3bb99c: writing user
+[2025-06-19 19:15:45] info: project-0b6d5b: writing user
+[2025-06-19 19:15:46] info: project-fc9e5c: writing user
+[2025-06-19 19:15:46] info: project-fe63f6: writing user
+[2025-06-19 19:15:46] info: project-9303df: writing user
+[2025-06-19 19:15:46] info: project-ad69b0: writing user
+[2025-06-19 19:15:47] info: project-352b7e: project init
+[2025-06-19 19:15:47] info: project-dc988d: writing user
+[2025-06-19 19:15:47] info: project-3c5f2b: writing user
+[2025-06-19 19:15:47] info: project-1fd847: writing user
+[2025-06-19 19:15:47] info: project-0d3d35: writing user
+[2025-06-19 19:15:48] info: project-a7b49e: writing user
+[2025-06-19 19:15:48] info: project-e54d78: writing user
+[2025-06-19 19:15:48] info: project-86a689: writing user
+[2025-06-19 19:15:48] info: project-4f6cee: writing user
+[2025-06-19 19:15:48] info: project-d62590: writing user
+[2025-06-19 19:15:48] info: project-628e81: writing user
+[2025-06-19 19:15:48] info: project-cbbffa: writing user
+[2025-06-19 19:15:48] info: project-99fb54: writing user
+[2025-06-19 19:15:49] info: project-ef08b4: writing user
+[2025-06-19 19:15:49] info: project-12dfc1: writing user
+[2025-06-19 19:15:49] info: project-352b7e: pinging main compute
+[2025-06-19 19:15:49] info: project-6af8ff: writing user
+[2025-06-19 19:15:49] info: project-eb8a17: writing user
+[2025-06-19 19:15:50] info: project-3bb99c: writing user
+[2025-06-19 19:15:50] info: project-50046f: writing user
+[2025-06-19 19:15:51] info: project-3c5f2b: writing user
+[2025-06-19 19:15:51] info: project-9f7b02: writing user
+[2025-06-19 19:15:51] info: project-8b8352: writing user
+[2025-06-19 19:15:52] info: project-dc988d: writing user
+[2025-06-19 19:15:52] info: project-e1f30e: writing user
+[2025-06-19 19:15:52] info: project-0d3d35: writing user
+[2025-06-19 19:15:52] info: project-9303df: writing user
+[2025-06-19 19:15:52] info: project-1fd847: writing user
+[2025-06-19 19:15:53] info: project-ad69b0: writing user
+[2025-06-19 19:15:53] info: project-0b6d5b: writing user
+[2025-06-19 19:15:53] info: project-a57e5a: writing user
+[2025-06-19 19:15:53] info: project-f52279: project init
+[2025-06-19 19:15:53] info: project-fc9e5c: writing user
+[2025-06-19 19:15:53] info: project-a7b49e: writing user
+[2025-06-19 19:15:53] info: project-6af8ff: writing user
+[2025-06-19 19:15:53] info: project-86a689: writing user
+[2025-06-19 19:15:54] info: project-12dfc1: writing user
+[2025-06-19 19:15:54] info: project-eb8a17: writing user
+[2025-06-19 19:15:54] info: project-628e81: writing user
+[2025-06-19 19:15:54] info: project-f52279: pinging main compute
+[2025-06-19 19:15:54] info: project-e54d78: writing user
+[2025-06-19 19:15:54] info: project-fe63f6: writing user
+[2025-06-19 19:15:55] info: project-99fb54: writing user
+[2025-06-19 19:15:55] info: project-cbbffa: writing user
+[2025-06-19 19:15:55] info: project-ef08b4: writing user
+[2025-06-19 19:15:55] info: project-4f6cee: writing user
+[2025-06-19 19:15:56] info: project-d62590: writing user
+[2025-06-19 19:15:56] info: project-3bb99c: writing user
+[2025-06-19 19:15:56] info: project-e1f30e: writing user
+[2025-06-19 19:15:56] info: project-9f7b02: writing user
+[2025-06-19 19:15:57] info: project-9303df: writing user
+[2025-06-19 19:15:57] info: project-50046f: writing user
+[2025-06-19 19:15:57] info: project-352b7e: writing user
+[2025-06-19 19:15:58] info: project-dc988d: writing user
+[2025-06-19 19:15:58] info: project-a57e5a: writing user
+[2025-06-19 19:15:58] info: project-3c5f2b: writing user
+[2025-06-19 19:15:58] info: project-1fd847: writing user
+[2025-06-19 19:15:58] info: project-a7b49e: creating checkpoint
+[2025-06-19 19:15:59] info: project-a7b49e: writing user
+[2025-06-19 19:15:59] info: project-12dfc1: writing user
+[2025-06-19 19:15:59] info: project-0d3d35: writing user
+[2025-06-19 19:15:59] info: project-ad69b0: writing user
+[2025-06-19 19:15:59] info: project-86a689: writing user
+[2025-06-19 19:15:59] info: project-99fb54: writing user
+[2025-06-19 19:15:59] info: project-8b8352: writing user
+[2025-06-19 19:15:59] info: project-0b6d5b: writing user
+[2025-06-19 19:16:00] info: project-5c2566: project init
+[2025-06-19 19:16:00] info: project-fc9e5c: writing user
+[2025-06-19 19:16:00] info: project-628e81: writing user
+[2025-06-19 19:16:00] info: project-eb8a17: writing user
+[2025-06-19 19:16:00] info: project-cbbffa: writing user
+[2025-06-19 19:16:01] info: project-e1f30e: writing user
+[2025-06-19 19:16:01] info: project-ef08b4: writing user
+[2025-06-19 19:16:01] info: project-fe63f6: writing user
+[2025-06-19 19:16:01] info: project-5c2566: pinging main compute
+[2025-06-19 19:16:01] info: project-6af8ff: writing user
+[2025-06-19 19:16:01] info: project-4f6cee: writing user
+[2025-06-19 19:16:02] info: project-d62590: writing user
+[2025-06-19 19:16:02] info: project-a57e5a: writing user
+[2025-06-19 19:16:02] info: project-9303df: writing user
+[2025-06-19 19:16:02] info: project-a7b49e: writing user
+[2025-06-19 19:16:02] info: project-50046f: writing user
+[2025-06-19 19:16:03] info: project-dc988d: writing user
+[2025-06-19 19:16:03] info: project-1fd847: writing user
+[2025-06-19 19:16:03] info: project-3bb99c: writing user
+[2025-06-19 19:16:03] info: project-e54d78: writing user
+[2025-06-19 19:16:03] info: project-3c5f2b: writing user
+[2025-06-19 19:16:04] info: project-0d3d35: writing user
+[2025-06-19 19:16:04] info: project-9f7b02: writing user
+[2025-06-19 19:16:05] info: project-12dfc1: writing user
+[2025-06-19 19:16:05] info: project-cbbffa: writing user
+[2025-06-19 19:16:05] info: project-8b8352: writing user
+[2025-06-19 19:16:05] info: project-e1f30e: writing user
+[2025-06-19 19:16:05] info: project-352b7e: writing user
+[2025-06-19 19:16:05] info: project-0b6d5b: writing user
+[2025-06-19 19:16:06] info: project-86a689: writing user
+[2025-06-19 19:16:06] info: project-ad69b0: writing user
+[2025-06-19 19:16:06] info: project-fe63f6: writing user
+[2025-06-19 19:16:06] info: project-9303df: writing user
+[2025-06-19 19:16:06] info: project-99fb54: writing user
+[2025-06-19 19:16:06] info: project-eb8a17: writing user
+[2025-06-19 19:16:07] info: project-a57e5a: writing user
+[2025-06-19 19:16:07] info: project-fc9e5c: writing user
+[2025-06-19 19:16:07] info: project-628e81: writing user
+[2025-06-19 19:16:07] info: project-e54d78: writing user
+[2025-06-19 19:16:07] info: project-21f2f7: project init
+[2025-06-19 19:16:07] info: project-f52279: writing user
+[2025-06-19 19:16:08] info: project-4f6cee: writing user
+[2025-06-19 19:16:08] info: project-6af8ff: writing user
+[2025-06-19 19:16:08] info: project-ef08b4: writing user
+[2025-06-19 19:16:09] info: project-21f2f7: pinging main compute
+[2025-06-19 19:16:09] info: project-50046f: writing user
+[2025-06-19 19:16:09] info: project-dc988d: writing user
+[2025-06-19 19:16:09] info: project-d62590: writing user
+[2025-06-19 19:16:09] info: project-1fd847: writing user
+[2025-06-19 19:16:09] info: project-e1f30e: writing user
+[2025-06-19 19:16:09] info: project-a7b49e: writing user
+[2025-06-19 19:16:09] info: project-12dfc1: writing user
+[2025-06-19 19:16:09] info: project-9f7b02: writing user
+[2025-06-19 19:16:10] info: project-3c5f2b: writing user
+[2025-06-19 19:16:10] info: project-5c2566: writing user
+[2025-06-19 19:16:10] info: project-cbbffa: writing user
+[2025-06-19 19:16:11] info: project-0d3d35: writing user
+[2025-06-19 19:16:11] info: project-86a689: writing user
+[2025-06-19 19:16:11] info: project-ddd6e4: project init
+[2025-06-19 19:16:11] info: project-0b6d5b: writing user
+[2025-06-19 19:16:11] info: project-ad69b0: writing user
+[2025-06-19 19:16:11] info: project-fc9e5c: writing user
+[2025-06-19 19:16:11] info: project-3bb99c: writing user
+[2025-06-19 19:16:12] info: project-352b7e: writing user
+[2025-06-19 19:16:12] info: project-9303df: writing user
+[2025-06-19 19:16:12] info: project-8b8352: writing user
+[2025-06-19 19:16:12] info: project-99fb54: writing user
+[2025-06-19 19:16:12] info: project-ef08b4: writing user
+[2025-06-19 19:16:12] info: project-ddd6e4: pinging main compute
+[2025-06-19 19:16:13] info: project-eb8a17: writing user
+[2025-06-19 19:16:13] info: project-f52279: writing user
+[2025-06-19 19:16:13] info: ========== test summary ==========

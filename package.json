@@ -1,0 +1,22 @@
+{
+  "name": "neon-load-test",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/winston": "^2.4.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@neondatabase/api-client": "^2.1.0",
+    "async-mutex": "^0.5.0",
+    "axios": "^1.10.0",
+    "nanoid": "^5.1.5",
+    "postgres": "^3.4.7",
+    "pretty-ms": "^9.2.0",
+    "winston": "^3.17.0"
+  }
+}
