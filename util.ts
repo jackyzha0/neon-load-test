@@ -78,12 +78,12 @@ export function displayTestSummary(projects: Array<{ metadata?: NeonProjectMetad
   displayPercentileTable(rollbackDurations, 'project rollback duration');
   
   logger.info(`========== failure stats ==========`);
-  logger.info(`- projects: ${failureStats.project}/${creationDurations.length}`);
+  logger.info(`- projects: ${failureStats.project}/${creationDurations.length + failureStats.project}`);
   logger.info(`- actions:`);
-  logger.info(`  - write: ${failureStats.action.write}/${writeDurations.length}`);
-  logger.info(`  - checkpoint: ${failureStats.action.checkpoint}/${checkpointDurations.length}`);
-  logger.info(`  - preview: ${failureStats.action.preview}/${previewDurations.length}`);
-  logger.info(`  - rollback: ${failureStats.action.rollback}/${rollbackDurations.length}`);
+  logger.info(`  - write: ${failureStats.action.write}/${writeDurations.length + failureStats.action.write}`);
+  logger.info(`  - checkpoint: ${failureStats.action.checkpoint}/${checkpointDurations.length + failureStats.action.checkpoint}`);
+  logger.info(`  - preview: ${failureStats.action.preview}/${previewDurations.length + failureStats.action.preview}`);
+  logger.info(`  - rollback: ${failureStats.action.rollback}/${rollbackDurations.length + failureStats.action.rollback}`);
 } 
 
 export function random<T>(arr: T[]): T {

@@ -331,13 +331,13 @@ async function run(options: Options) {
   *
   * estimated rate multiple: 50x
   **/
-const multiplier = 1;
+const multiplier = 50;
 try {
   await run({
     regions: ['aws-us-east-2'],
-    numInitialProjects: 25,
+    numInitialProjects: 0,
     rpm: {
-      projects: 10 * multiplier, // 15 base, we should multiply by 50 for the test
+      projects: 15 * multiplier, // 15 base, we should multiply by 50 for the test
       perProject: {
         checkpoints: 1,
         writes: 10,
