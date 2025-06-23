@@ -11,7 +11,6 @@ const customFormat = winston.format.combine(
 );
 
 const logger = winston.createLogger({
-  level: process.env.LOG_LEVEL || 'info',
   format: customFormat,
   transports: [
     // Console transport
@@ -19,12 +18,14 @@ const logger = winston.createLogger({
       format: winston.format.combine(
         winston.format.colorize(),
         customFormat
-      )
+      ),
+      level: 'info',
     }),
     // File transport for all logs
     new winston.transports.File({ 
       filename: 'load-test.log',
-      format: customFormat
+      format: customFormat,
+      level: 'debug',
     }),
     // Separate file for errors
     new winston.transports.File({ 
@@ -50,10 +51,8 @@ const logger = winston.createLogger({
   exitOnError: false
 });
 
-// Export winston logger instance for direct use if needed
 export { logger };
 
-// Maintain backward compatibility with existing API
 export function prettyPrintError(message: string, error: unknown) {
   if (axios.isAxiosError(error)) {
     logger.error(`${message} (${error.status}): ${error.response?.data?.message || error.message}`);
@@ -63,27 +62,3 @@ export function prettyPrintError(message: string, error: unknown) {
   logger.error(`${message}: ${error instanceof Error ? error.message : error}`);
 }
 
-export function log(message: string) {
-  logger.info(message);
-}
-
-// Additional utility functions for different log levels
-export function logError(message: string, error?: unknown) {
-  if (error) {
-    logger.error(message, { error });
-  } else {
-    logger.error(message);
-  }
-}
-
-export function logWarn(message: string) {
-  logger.warn(message);
-}
-
-export function logDebug(message: string) {
-  logger.debug(message);
-}
-
-export function logInfo(message: string) {
-  logger.info(message);
-}

@@ -41,7 +41,9 @@ export async function clearAllProjects() {
 
     cursor = resp.data.pagination?.cursor;
     for (const project of projects) {
-      projectIds.add(project.id);
+      if (project.name.startsWith('project-load')) {
+        projectIds.add(project.id);
+      }
     }
   }
 

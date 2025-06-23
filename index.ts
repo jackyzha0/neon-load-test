@@ -4,9 +4,17 @@ import fs from 'fs';
 import type { NeonProjectMetadata, NeonRegion, NeonApiClient } from './neon';
 import { apiClient, clearAllProjects } from './neon';
 import { displayTestSummary, failureStats, random, scheduleAtRate } from './util';
-import { prettyPrintError, log, logger } from './logger';
+import { prettyPrintError, logger } from './logger';
 import { Mutex } from 'async-mutex';
 import { EndpointType } from '@neondatabase/api-client';
+import v8 from "node:v8";
+
+const db = (uri: string) => postgres(uri, {
+  connect_timeout: 150,
+  connection: {
+    application_name: 'project-load-test',
+  }
+});
 
 const nanoid = customAlphabet('0123456789abcdef', 6);
 
@@ -26,8 +34,8 @@ class NeonProject {
   }
 
   async init(region: NeonRegion = 'aws-us-east-2') {
-    const name = `project-${nanoid()}`;
-    log(`${name}: project init`)
+    const name = `project-load-${nanoid()}`;
+    logger.debug(`${name}: project init`)
     
     const creationStartTime = Date.now();
     const res = await this.apiClient.createProject({
@@ -51,7 +59,7 @@ class NeonProject {
     const roleName = defaultRole.name;
     const dbName = defaultDb.name;
 
-    log(`${name}: pinging main compute`)
+    logger.debug(`${name}: pinging main compute`)
     const pingStartTime = Date.now();  
     const uriRes = await this.apiClient.getConnectionUri({
       projectId,
@@ -60,7 +68,7 @@ class NeonProject {
     })
 
     const uri = uriRes.data.uri
-    const sql = postgres(uri);
+    const sql = db(uri);
     this.mainDbUri = uri;
     await sql`CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name VARCHAR(255));`;
     await sql`INSERT INTO users (name) VALUES ('test_user_init') RETURNING id, name;`;
@@ -139,7 +147,7 @@ class NeonProject {
   }
 
   async writeUser(dbUri: string) {
-    log(`${this.metadata?.name}: writing user`)
+    logger.debug(`${this.metadata?.name}: writing user`)
     await this.mutex.runExclusive(async () => {
       if (!this.metadata) {
         throw new Error('project not initialized');
@@ -148,7 +156,7 @@ class NeonProject {
       const writeStartTime = Date.now();
 
       const name = `test_user_${nanoid()}`;
-      const sql = postgres(dbUri);
+      const sql = db(dbUri);
       await sql`INSERT INTO users (name) VALUES (${name}) RETURNING id, name;`;
       await sql.end();
   
@@ -158,7 +166,7 @@ class NeonProject {
   }
 
   async createCheckpoint() {
-    log(`${this.metadata?.name}: creating checkpoint`)
+    logger.debug(`${this.metadata?.name}: creating checkpoint`)
     await this.mutex.runExclusive(async () => {
       if (!this.metadata) {
         throw new Error('project not initialized');
@@ -180,7 +188,7 @@ class NeonProject {
   }
 
   async createPreview(branchId: string) {
-    log(`${this.metadata?.name}: creating preview of ${branchId}`)
+    logger.debug(`${this.metadata?.name}: creating preview of ${branchId}`)
 
     await this.mutex.runExclusive(async () => {
       if (!this.metadata || !this.mainDbUri) {
@@ -205,7 +213,7 @@ class NeonProject {
 
       const uri = new URL(this.mainDbUri);
       uri.host = previewEndpoint.host;
-      const sql = postgres(uri.toString());
+      const sql = db(uri.toString());
       await sql`SELECT * FROM users;`;
       await sql.end();
 
@@ -215,7 +223,7 @@ class NeonProject {
   }
 
   async rollback(branchId: string) {
-    log(`${this.metadata?.name}: rolling back to ${branchId}`)
+    logger.debug(`${this.metadata?.name}: rolling back to ${branchId}`)
     await this.mutex.runExclusive(async () => {
       if (!this.metadata || !this.mainBranchId) {
         throw new Error('project not initialized');
@@ -257,9 +265,11 @@ type Options = {
 }
 
 function clearLogFiles() {
-  const logFiles = ['load-test.log', 'error.log', 'exceptions.log', 'rejections.log'];
+  const localFiles = fs.readdirSync('.')
+  const logFiles = localFiles.filter(file => file.endsWith('.log'));
+  const snapshotFiles = localFiles.filter(file => file.endsWith('.heapsnapshot'));
   
-  for (const file of logFiles) {
+  for (const file of [...logFiles, ...snapshotFiles]) {
     try {
       if (fs.existsSync(file)) {
         fs.unlinkSync(file);
@@ -277,8 +287,10 @@ async function run(options: Options) {
   clearLogFiles();
   
   // Set up ctrl+c handler to display summary
-  const handleExit = () => {
+  const handleExit = async () => {
     displayTestSummary(projects);
+    const snapshotPath = v8.writeHeapSnapshot();
+    logger.info(`heap snapshot written to: ${snapshotPath}`);
     process.exit(0);
   };
   
@@ -331,7 +343,7 @@ async function run(options: Options) {
   *
   * estimated rate multiple: 50x
   **/
-const multiplier = 10;
+const multiplier = 50;
 try {
   await run({
     regions: ['aws-us-east-2'],

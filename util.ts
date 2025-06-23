@@ -1,6 +1,6 @@
 import prettyMs from 'pretty-ms';
 import type { NeonProjectMetadata } from './neon';
-import { prettyPrintError, logger } from './logger';
+import { logger } from './logger';
 
 export function calculatePercentiles(values: number[]): Record<string, number> {
   if (values.length === 0) return {};
