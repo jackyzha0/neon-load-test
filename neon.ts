@@ -8,14 +8,6 @@ export type NeonProjectMetadata = {
   roleName: string;
   region: NeonRegion;
   dbName: string;
-
-  // metrics tracking
-  creationDurationMs: number;
-  pingDurationMs: number;
-  writeMs: Array<number>;
-  checkpointMs: Array<number>;
-  previewMs: Array<number>;
-  rollbackMs: Array<number>;
 }
 
 if (!process.env.NEON_API_KEY) {

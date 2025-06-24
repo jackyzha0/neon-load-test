@@ -1,5 +1,4 @@
 import prettyMs from 'pretty-ms';
-import type { NeonProjectMetadata } from './neon';
 import { logger } from './logger';
 
 export function calculatePercentiles(values: number[]): Record<string, number> {
@@ -37,54 +36,6 @@ export const failureStats = {
     preview: 0,
   }
 }
-
-export function displayTestSummary(projects: Array<{ metadata?: NeonProjectMetadata }>) {
-  logger.info('========== test summary ==========');
-  
-  // Extract metrics
-  const creationDurations = projects
-    .map(p => p.metadata?.creationDurationMs)
-    .filter((d): d is number => d !== undefined);
-    
-  const pingDurations = projects
-    .map(p => p.metadata?.pingDurationMs)
-    .filter((d): d is number => d !== undefined);
-
-  const writeDurations = projects
-    .map(p => p.metadata?.writeMs)
-    .filter((d): d is number[] => d !== undefined)
-    .flat();
-
-  const checkpointDurations = projects
-    .map(p => p.metadata?.checkpointMs)
-    .filter((d): d is number[] => d !== undefined)
-    .flat();
-
-  const previewDurations = projects
-    .map(p => p.metadata?.previewMs)
-    .filter((d): d is number[] => d !== undefined)
-    .flat();
-
-  const rollbackDurations = projects
-    .map(p => p.metadata?.rollbackMs)
-    .filter((d): d is number[] => d !== undefined)
-    .flat();
-  
-  displayPercentileTable(creationDurations, 'project creation duration');
-  displayPercentileTable(pingDurations, 'project compute initial ping duration');
-  displayPercentileTable(writeDurations, 'project write duration');
-  displayPercentileTable(checkpointDurations, 'project checkpoint branch creation duration');
-  displayPercentileTable(previewDurations, 'project preview branch creation duration');
-  displayPercentileTable(rollbackDurations, 'project rollback duration');
-  
-  logger.info(`========== failure stats ==========`);
-  logger.info(`- projects: ${failureStats.project}/${creationDurations.length + failureStats.project}`);
-  logger.info(`- actions:`);
-  logger.info(`  - write: ${failureStats.action.write}/${writeDurations.length + failureStats.action.write}`);
-  logger.info(`  - checkpoint: ${failureStats.action.checkpoint}/${checkpointDurations.length + failureStats.action.checkpoint}`);
-  logger.info(`  - preview: ${failureStats.action.preview}/${previewDurations.length + failureStats.action.preview}`);
-  logger.info(`  - rollback: ${failureStats.action.rollback}/${rollbackDurations.length + failureStats.action.rollback}`);
-} 
 
 export function random<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)]!;

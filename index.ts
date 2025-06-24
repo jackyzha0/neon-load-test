@@ -3,7 +3,7 @@ import postgres from 'postgres';
 import fs from 'fs';
 import type { NeonProjectMetadata, NeonRegion, NeonApiClient } from './neon';
 import { apiClient, clearAllProjects } from './neon';
-import { displayTestSummary, failureStats, random, scheduleAtRate } from './util';
+import { failureStats, random, scheduleAtRate } from './util';
 import { prettyPrintError, logger } from './logger';
 import { Mutex } from 'async-mutex';
 import { EndpointType } from '@neondatabase/api-client';
@@ -36,12 +36,10 @@ class NeonProject {
   async init(region: NeonRegion = 'aws-us-east-2') {
     const name = `project-load-${nanoid()}`;
     logger.debug(`${name}: project init`)
-    
-    const creationStartTime = Date.now();
+
     const res = await this.apiClient.createProject({
       project: { name, region_id: region },
     });
-    const creationDurationMs = Date.now() - creationStartTime;
 
     const defaultRole = res.data.roles.at(0);
     if (defaultRole === undefined) {
@@ -60,7 +58,6 @@ class NeonProject {
     const dbName = defaultDb.name;
 
     logger.debug(`${name}: pinging main compute`)
-    const pingStartTime = Date.now();  
     const uriRes = await this.apiClient.getConnectionUri({
       projectId,
       database_name: dbName,
@@ -74,8 +71,7 @@ class NeonProject {
     await sql`INSERT INTO users (name) VALUES ('test_user_init') RETURNING id, name;`;
     const result = await sql`SELECT * FROM users;`;
     await sql.end();
-    
-    const pingDurationMs = Date.now() - pingStartTime;
+
 
     if (result.length === 0) {
       throw new Error('ping failed, unexpected result');
@@ -87,12 +83,6 @@ class NeonProject {
       roleName,
       region,
       dbName,
-      creationDurationMs,
-      pingDurationMs,
-      writeMs: [],
-      checkpointMs: [],
-      previewMs: [],
-      rollbackMs: [],
     };
 
   }
@@ -143,7 +133,7 @@ class NeonProject {
         failureStats.action.rollback++;
         prettyPrintError("error rolling back", error);
       }
-    ) 
+    )
   }
 
   async writeUser(dbUri: string) {
@@ -153,15 +143,10 @@ class NeonProject {
         throw new Error('project not initialized');
       }
 
-      const writeStartTime = Date.now();
-
       const name = `test_user_${nanoid()}`;
       const sql = db(dbUri);
       await sql`INSERT INTO users (name) VALUES (${name}) RETURNING id, name;`;
       await sql.end();
-  
-      const writeDurationMs = Date.now() - writeStartTime;
-      this.metadata.writeMs.push(writeDurationMs);
     });
   }
 
@@ -171,8 +156,7 @@ class NeonProject {
       if (!this.metadata) {
         throw new Error('project not initialized');
       }
-  
-      const checkpointStartTime = Date.now();
+
       const res = await this.apiClient.createProjectBranch(this.metadata.projectId, {
         branch: {
           name: `checkpoint-${nanoid()}`,
@@ -181,9 +165,6 @@ class NeonProject {
       })
 
       this.checkpointBranches.add(res.data.branch.id);
-  
-      const checkpointDurationMs = Date.now() - checkpointStartTime;
-      this.metadata.checkpointMs.push(checkpointDurationMs);
     });
   }
 
@@ -195,7 +176,6 @@ class NeonProject {
         throw new Error('project not initialized');
       }
 
-      const previewStartTime = Date.now();
       const res = await this.apiClient.createProjectBranch(this.metadata.projectId, {
         branch: {
           name: `preview-${nanoid()}`,
@@ -216,9 +196,6 @@ class NeonProject {
       const sql = db(uri.toString());
       await sql`SELECT * FROM users;`;
       await sql.end();
-
-      const previewDurationMs = Date.now() - previewStartTime;
-      this.metadata.previewMs.push(previewDurationMs);
     });
   }
 
@@ -229,13 +206,12 @@ class NeonProject {
         throw new Error('project not initialized');
       }
 
-      const rollbackStartTime = Date.now();
       const preserveName = `main-old-${nanoid()}`;
       await this.apiClient.restoreProjectBranch(this.metadata.projectId, this.mainBranchId, {
         source_branch_id: branchId,
         preserve_under_name: preserveName,
       })
-      
+
       // the id returned on this branch isnt accurate, we need to list and find the one with the preserve name
       const branchesRes = await this.apiClient.listProjectBranches({ projectId: this.metadata.projectId });
       const preservedBranch = branchesRes.data.branches.find(b => b.name === preserveName);
@@ -243,8 +219,6 @@ class NeonProject {
         throw new Error('preserved branch not found');
       }
 
-      const rollbackDurationMs = Date.now() - rollbackStartTime;
-      this.metadata.rollbackMs.push(rollbackDurationMs);
       this.mainBranchId = preservedBranch.id;
     })
   }
@@ -268,7 +242,7 @@ function clearLogFiles() {
   const localFiles = fs.readdirSync('.')
   const logFiles = localFiles.filter(file => file.endsWith('.log'));
   const snapshotFiles = localFiles.filter(file => file.endsWith('.heapsnapshot'));
-  
+
   for (const file of [...logFiles, ...snapshotFiles]) {
     try {
       if (fs.existsSync(file)) {
@@ -282,18 +256,17 @@ function clearLogFiles() {
 
 async function run(options: Options) {
   const projects: NeonProject[] = [];
-  
+
   // Clear all log files at start of run
   clearLogFiles();
-  
+
   // Set up ctrl+c handler to display summary
   const handleExit = async () => {
-    displayTestSummary(projects);
     const snapshotPath = v8.writeHeapSnapshot();
     logger.info(`heap snapshot written to: ${snapshotPath}`);
     process.exit(0);
   };
-  
+
   process.on('SIGINT', handleExit);
 
   await clearAllProjects();
@@ -357,7 +330,7 @@ try {
         previews: 1 / 5, // 1 preview every 5 minutes
       }
     }
-  });  
+  });
 } catch (error) {
   prettyPrintError("error during setup", error);
 }
